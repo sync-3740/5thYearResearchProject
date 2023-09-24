@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HeartBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+</head>
+<script>
+    
+    function text() {
+        const inputText = document.querySelector('#input').value;
+
+        var ul = document.getElementById("list");
+        var li = document.createElement("li");
+        li.setAttribute('class','input');
+        li.appendChild(document.createTextNode(inputText));
+        ul.appendChild(li);
+        var li2 = document.createElement("li");
+        li2.setAttribute('class','response');
+        var response = '{{chatbot.get_response("What is blood pressure")}}'
+        li2.appendChild(document.createTextNode(response));
+        ul.appendChild(li2);
+    };
+
+</script>
+<body>
+    <h1>Welcome to HeartBot</h1>
+
+    <p>HeartBot is an AI powered chatbot that can teach you about cardiovascular health</p>
+
+    <ul id="list" style="width: 800px; list-style-type: none;">
+
+    </ul>
+    <form>
+        <input id="input" type="text" placeholder="Say something">
+    </form>
+  
+    <div id="container">
+        <button onclick="text()" id="button">Enter</button>
+    </div>
+</body>
+</html>
